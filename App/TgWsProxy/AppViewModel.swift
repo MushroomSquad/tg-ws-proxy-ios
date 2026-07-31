@@ -23,7 +23,8 @@ final class AppViewModel: ObservableObject {
     private var server: ProxyServer?
     private var bgTaskId: UIBackgroundTaskIdentifier = .invalid
 
-    init(store: ConfigStore = ConfigStore()) {
+    init() {
+        let store = ConfigStore()
         self.store = store
         syncDraftFromStore()
         showFirstRun = !store.firstRunDone
