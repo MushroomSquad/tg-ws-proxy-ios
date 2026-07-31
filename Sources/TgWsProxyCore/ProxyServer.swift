@@ -180,7 +180,7 @@ public final class ProxyServer: @unchecked Sendable {
     private func handleClient(_ connection: NWConnection) async {
         stats.bumpConnectionsTotal()
         stats.bumpConnectionsActive(1)
-        defer { lock.lock(); stats.bumpConnectionsActive(-1); lock.unlock() }
+        defer { stats.bumpConnectionsActive(-1) }
 
         let peer = "\(connection.endpoint)"
         let label = peer
