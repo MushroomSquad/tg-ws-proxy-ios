@@ -87,7 +87,7 @@ public final class Balancer: @unchecked Sendable {
     public func getDomainsForDc(_ dcId: Int) -> [String] {
         lock.lock(); defer { lock.unlock() }
         let current = dcToDomain[dcId]
-        var shuffled = domains.shuffled()
+        let shuffled = domains.shuffled()
         var out: [String] = []
         if let current { out.append(current) }
         for d in shuffled where d != current {

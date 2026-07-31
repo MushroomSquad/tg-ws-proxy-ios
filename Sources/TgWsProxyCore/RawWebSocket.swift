@@ -1,5 +1,6 @@
 import Foundation
 import Network
+import Security
 
 public final class WsHandshakeError: Error, LocalizedError {
     public let statusCode: Int
