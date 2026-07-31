@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1F8FD86C911C44ABB96339D2"
+               BlueprintIdentifier = "A9ADF136D04F4B90974D249B"
                BuildableName = "TgWsProxy.app"
                BlueprintName = "TgWsProxy"
                ReferencedContainer = "container:TgWsProxy.xcodeproj">
@@ -43,7 +43,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1F8FD86C911C44ABB96339D2"
+            BlueprintIdentifier = "A9ADF136D04F4B90974D249B"
             BuildableName = "TgWsProxy.app"
             BlueprintName = "TgWsProxy"
             ReferencedContainer = "container:TgWsProxy.xcodeproj">
@@ -60,7 +60,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1F8FD86C911C44ABB96339D2"
+            BlueprintIdentifier = "A9ADF136D04F4B90974D249B"
             BuildableName = "TgWsProxy.app"
             BlueprintName = "TgWsProxy"
             ReferencedContainer = "container:TgWsProxy.xcodeproj">

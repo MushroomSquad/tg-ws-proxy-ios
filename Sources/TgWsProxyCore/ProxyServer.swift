@@ -178,9 +178,9 @@ public final class ProxyServer: @unchecked Sendable {
     }
 
     private func handleClient(_ connection: NWConnection) async {
-        stats.inc(\.connectionsTotal)
-        stats.inc(\.connectionsActive)
-        defer { lock.lock(); stats.connectionsActive -= 1; lock.unlock() }
+        stats.bumpConnectionsTotal()
+        stats.bumpConnectionsActive(1)
+        defer { lock.lock(); stats.bumpConnectionsActive(-1); lock.unlock() }
 
         let peer = "\(connection.endpoint)"
         let label = peer
@@ -192,7 +192,7 @@ public final class ProxyServer: @unchecked Sendable {
 
             let handshake = try await client.readExact(ProtocolConstants.handshakeLen, timeoutMs: 10_000)
             guard let result = Handshake.tryHandshake(handshake: handshake, secret: secretBytes) else {
-                stats.inc(\.connectionsBad)
+                stats.bumpConnectionsBad()
                 let b0 = handshake.first.map { String(format: "0x%02X", $0) } ?? "?"
                 log("[\(label)] bad handshake (wrong secret or proto) b0=\(b0) secret=\(Self.maskSecret(cfg.secret)) — re-open tg://proxy link from this app")
                 client.close()
@@ -282,7 +282,7 @@ public final class ProxyServer: @unchecked Sendable {
                         allRedirects = false
                         break
                     } catch let e as WsHandshakeError {
-                        stats.inc(\.wsErrors)
+                        stats.bumpWsErrors()
                         if e.isRedirect {
                             wsFailedRedirect = true
                             log("[\(label)] DC\(dc)\(mediaTag) got \(e.statusCode) from \(domain) -> \(e.location ?? "?")")
@@ -292,12 +292,12 @@ public final class ProxyServer: @unchecked Sendable {
                             log("[\(label)] DC\(dc)\(mediaTag) WS handshake: \(e.statusLine)")
                         }
                     } catch is URLError {
-                        stats.inc(\.wsErrors)
+                        stats.bumpWsErrors()
                         wsTimedOut = true
                         log("[\(label)] DC\(dc)\(mediaTag) WS connect timed out via \(domain)")
                         break
                     } catch {
-                        stats.inc(\.wsErrors)
+                        stats.bumpWsErrors()
                         allRedirects = false
                         log("[\(label)] DC\(dc)\(mediaTag) WS connect failed: \(error.localizedDescription)")
                     }
@@ -331,7 +331,7 @@ public final class ProxyServer: @unchecked Sendable {
             if let target { ipFailUntil[target] = nil }
             lock.unlock()
             wsPool?.reportSuccess(dc: dc, isMedia: isMedia)
-            stats.inc(\.connectionsWs)
+            stats.bumpConnectionsWs()
 
             try await ws!.send(relayInit)
             await Bridge.bridgeWsReencrypt(

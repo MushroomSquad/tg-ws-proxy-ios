@@ -26,10 +26,10 @@ public final class TcpStream: @unchecked Sendable {
 
     public static func startReady(connection: NWConnection, timeoutMs: Int) async throws {
         try await withCheckedThrowingContinuation { (cont: CheckedContinuation<Void, Error>) in
-            var resumed = false
+            let gate = LockedBox(false)
             let timeout = DispatchWorkItem {
-                if !resumed {
-                    resumed = true
+                if !gate.value {
+                    gate.value = true
                     connection.cancel()
                     cont.resume(throwing: URLError(.timedOut))
                 }
@@ -38,11 +38,11 @@ public final class TcpStream: @unchecked Sendable {
             connection.stateUpdateHandler = { state in
                 switch state {
                 case .ready:
-                    if !resumed { resumed = true; timeout.cancel(); cont.resume() }
+                    if !gate.value { gate.value = true; timeout.cancel(); cont.resume() }
                 case .failed(let err):
-                    if !resumed { resumed = true; timeout.cancel(); cont.resume(throwing: err) }
+                    if !gate.value { gate.value = true; timeout.cancel(); cont.resume(throwing: err) }
                 case .cancelled:
-                    if !resumed { resumed = true; timeout.cancel(); cont.resume(throwing: URLError(.cancelled)) }
+                    if !gate.value { gate.value = true; timeout.cancel(); cont.resume(throwing: URLError(.cancelled)) }
                 default: break
                 }
             }

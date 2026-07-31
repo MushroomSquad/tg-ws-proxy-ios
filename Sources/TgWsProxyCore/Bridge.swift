@@ -21,9 +21,19 @@ public final class Stats: @unchecked Sendable {
 
     public func addBytesUp(_ n: Int) { lock.lock(); bytesUp += Int64(n); lock.unlock() }
     public func addBytesDown(_ n: Int) { lock.lock(); bytesDown += Int64(n); lock.unlock() }
-    public func inc(_ keyPath: WritableKeyPath<Stats, Int64>) {
-        lock.lock(); self[keyPath: keyPath] += 1; lock.unlock()
-    }
+
+    public func bumpConnectionsTotal() { lock.lock(); connectionsTotal += 1; lock.unlock() }
+    public func bumpConnectionsActive(_ delta: Int64) { lock.lock(); connectionsActive += delta; lock.unlock() }
+    public func bumpConnectionsWs() { lock.lock(); connectionsWs += 1; lock.unlock() }
+    public func bumpConnectionsTcpFallback() { lock.lock(); connectionsTcpFallback += 1; lock.unlock() }
+    public func bumpConnectionsCfproxy() { lock.lock(); connectionsCfproxy += 1; lock.unlock() }
+    public func bumpConnectionsFronting() { lock.lock(); connectionsFronting += 1; lock.unlock() }
+    public func bumpConnectionsBad() { lock.lock(); connectionsBad += 1; lock.unlock() }
+    public func bumpWsErrors() { lock.lock(); wsErrors += 1; lock.unlock() }
+    public func bumpPoolHits() { lock.lock(); poolHits += 1; lock.unlock() }
+    public func bumpPoolMisses() { lock.lock(); poolMisses += 1; lock.unlock() }
+    public func bumpCfPoolHits() { lock.lock(); cfPoolHits += 1; lock.unlock() }
+    public func bumpCfPoolMisses() { lock.lock(); cfPoolMisses += 1; lock.unlock() }
 
     public func summary() -> String {
         lock.lock(); defer { lock.unlock() }
@@ -110,10 +120,10 @@ public enum Bridge {
         splitter: MsgSplitter? = nil
     ) async {
         let dcTag = dc.map { "DC\($0)\(isMedia ? "m" : "")" } ?? "DC?"
-        var upBytes: Int64 = 0
-        var downBytes: Int64 = 0
-        var upPackets = 0
-        var downPackets = 0
+        let upBytes = LockedBox<Int64>(0)
+        let downBytes = LockedBox<Int64>(0)
+        let upPackets = LockedBox(0)
+        let downPackets = LockedBox(0)
         let start = Date()
         let closeReason = LockedBox("normal")
 
@@ -127,8 +137,8 @@ public enum Bridge {
                             break
                         }
                         stats.addBytesUp(chunk.count)
-                        upBytes += Int64(chunk.count)
-                        upPackets += 1
+                        upBytes.value += Int64(chunk.count)
+                        upPackets.value += 1
                         let plain = try ctx.cltDec.update(chunk)
                         let out = try ctx.tgEnc.update(plain)
                         if let splitter {
@@ -152,8 +162,8 @@ public enum Bridge {
                             break
                         }
                         stats.addBytesDown(data.count)
-                        downBytes += Int64(data.count)
-                        downPackets += 1
+                        downBytes.value += Int64(data.count)
+                        downPackets.value += 1
                         let plain = try ctx.tgDec.update(data)
                         let out = try ctx.cltEnc.update(plain)
                         try await client.write(out)
@@ -168,8 +178,8 @@ public enum Bridge {
 
         let elapsed = Date().timeIntervalSince(start)
         log("[\(label)] \(dcTag) WS session closed (\(closeReason.value)): " +
-            "^\(ProtocolConstants.humanBytes(upBytes)) (\(upPackets) pkts) " +
-            "v\(ProtocolConstants.humanBytes(downBytes)) (\(downPackets) pkts) in \(String(format: "%.1f", elapsed))s")
+            "^\(ProtocolConstants.humanBytes(upBytes.value)) (\(upPackets.value) pkts) " +
+            "v\(ProtocolConstants.humanBytes(downBytes.value)) (\(downPackets.value) pkts) in \(String(format: "%.1f", elapsed))s")
         await ws.closeQuietly()
         client.close()
     }
@@ -182,21 +192,21 @@ public enum Bridge {
         stats: Stats,
         log: @escaping (String) -> Void
     ) async {
-        var upBytes: Int64 = 0
-        var downBytes: Int64 = 0
-        var upPackets = 0
-        var downPackets = 0
+        let upBytes = LockedBox<Int64>(0)
+        let downBytes = LockedBox<Int64>(0)
+        let upPackets = LockedBox(0)
+        let downPackets = LockedBox(0)
         let start = Date()
 
         await withTaskGroup(of: Void.self) { group in
             group.addTask {
                 try? await forward(src: client, dst: remote, isUp: true, ctx: ctx, stats: stats) { n in
-                    upBytes += Int64(n); upPackets += 1
+                    upBytes.value += Int64(n); upPackets.value += 1
                 }
             }
             group.addTask {
                 try? await forward(src: remote, dst: client, isUp: false, ctx: ctx, stats: stats) { n in
-                    downBytes += Int64(n); downPackets += 1
+                    downBytes.value += Int64(n); downPackets.value += 1
                 }
             }
             await group.next()
@@ -206,8 +216,8 @@ public enum Bridge {
         remote.close()
         let elapsed = Date().timeIntervalSince(start)
         log("[\(label)] TCP bridge closed: " +
-            "^\(ProtocolConstants.humanBytes(upBytes)) (\(upPackets) pkts) " +
-            "v\(ProtocolConstants.humanBytes(downBytes)) (\(downPackets) pkts) in \(String(format: "%.1f", elapsed))s")
+            "^\(ProtocolConstants.humanBytes(upBytes.value)) (\(upPackets.value) pkts) " +
+            "v\(ProtocolConstants.humanBytes(downBytes.value)) (\(downPackets.value) pkts) in \(String(format: "%.1f", elapsed))s")
     }
 
     private static func forward(
@@ -232,16 +242,6 @@ public enum Bridge {
             try await dst.write(out)
         }
     }
-}
-
-private final class LockedBox<T>: @unchecked Sendable {
-    private let lock = NSLock()
-    private var _value: T
-    var value: T {
-        get { lock.lock(); defer { lock.unlock() }; return _value }
-        set { lock.lock(); _value = newValue; lock.unlock() }
-    }
-    init(_ value: T) { _value = value }
 }
 
 public enum Fallback {
@@ -363,7 +363,7 @@ public enum Fallback {
                 }
             }
             guard let ws else { continue }
-            stats.inc(\.connectionsCfproxy)
+            stats.bumpConnectionsCfproxy()
             try? await ws.send(relayInit)
             await Bridge.bridgeWsReencrypt(
                 client: client, ws: ws, label: label, ctx: ctx, stats: stats, log: log,
@@ -409,7 +409,7 @@ public enum Fallback {
         if let chosen, balancer.updateDomainForDc(dc, domain: chosen) {
             log("[\(label)] Switched active CF domain")
         }
-        stats.inc(\.connectionsCfproxy)
+        stats.bumpConnectionsCfproxy()
         try? await connected.send(relayInit)
         await Bridge.bridgeWsReencrypt(
             client: client, ws: connected, label: label, ctx: ctx, stats: stats, log: log,
@@ -457,7 +457,7 @@ public enum Fallback {
             let out = try ctx.cltEnc.update(try ctx.tgDec.update(first))
             try await client.write(out)
             stats.addBytesDown(first.count)
-            stats.inc(\.connectionsTcpFallback)
+            stats.bumpConnectionsTcpFallback()
             await Bridge.bridgeTcpReencrypt(client: client, remote: remote, label: label, ctx: ctx, stats: stats, log: log)
             return true
         } catch {

@@ -178,7 +178,7 @@ public final class RawWebSocket: @unchecked Sendable {
         sec_protocol_options_set_verify_block(tls.securityProtocolOptions, { _, _, complete in
             complete(true)
         }, DispatchQueue.global())
-        sec_protocol_options_set_tls_server_name(tls.securityProtocolOptions, sniHost as CFString)
+        sec_protocol_options_set_tls_server_name(tls.securityProtocolOptions, sniHost)
 
         let tcp = NWProtocolTCP.Options()
         tcp.noDelay = true
@@ -186,10 +186,10 @@ public final class RawWebSocket: @unchecked Sendable {
         let connection = NWConnection(to: endpoint, using: params)
 
         try await withCheckedThrowingContinuation { (cont: CheckedContinuation<Void, Error>) in
-            var resumed = false
+            let gate = LockedBox(false)
             let timeout = DispatchWorkItem {
-                if !resumed {
-                    resumed = true
+                if !gate.value {
+                    gate.value = true
                     connection.cancel()
                     cont.resume(throwing: URLError(.timedOut))
                 }
@@ -198,20 +198,20 @@ public final class RawWebSocket: @unchecked Sendable {
             connection.stateUpdateHandler = { state in
                 switch state {
                 case .ready:
-                    if !resumed {
-                        resumed = true
+                    if !gate.value {
+                        gate.value = true
                         timeout.cancel()
                         cont.resume()
                     }
                 case .failed(let error):
-                    if !resumed {
-                        resumed = true
+                    if !gate.value {
+                        gate.value = true
                         timeout.cancel()
                         cont.resume(throwing: error)
                     }
                 case .cancelled:
-                    if !resumed {
-                        resumed = true
+                    if !gate.value {
+                        gate.value = true
                         timeout.cancel()
                         cont.resume(throwing: URLError(.cancelled))
                     }

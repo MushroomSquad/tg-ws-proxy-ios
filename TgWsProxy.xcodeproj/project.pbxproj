@@ -1,139 +1,148 @@
 // !$*UTF8*$!
 {
 	archiveVersion = 1;
-	classes = {};
+	classes = {
+	};
 	objectVersion = 56;
 	objects = {
-		1CE34E33ACDC4C9B8C7C6620 /* TgWsProxyCore */ = {
+
+		85C1F006857E4E8AA98AED6B /* TgWsProxyCore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A49C6BDF281A4A43ABD188C0 /* XCLocalSwiftPackageReference */;
+			package = 804D7F012F6A4E51804145B9 /* XCLocalSwiftPackageReference "" */;
 			productName = TgWsProxyCore;
 		};
-		A49C6BDF281A4A43ABD188C0 /* XCLocalSwiftPackageReference "" */ = {
+		804D7F012F6A4E51804145B9 /* XCLocalSwiftPackageReference "" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = .;
 		};
-		C2733468E99A46DCAA1301C2 /* TgWsProxyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TgWsProxyApp.swift; sourceTree = "<group>"; };
-		70D21FEA363741B38070AFA3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		82CE2F25A2034086A5FD82E3 /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
-		92A8865254144342B34D5882 /* ConfigStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigStore.swift; sourceTree = "<group>"; };
-		96A518235ECA42FD8018221E /* AppLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLog.swift; sourceTree = "<group>"; };
-		87FF9AD6245E4DC6A45E042D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		4E9FED57839B471EBA532861 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C1C1DAC4DD314ED588EE6E87 /* TgWsProxy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TgWsProxy.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		12AB56E208D5453A9D355B32 /* TgWsProxyApp.swift in Sources/Resources */ = {isa = PBXBuildFile; fileRef = C2733468E99A46DCAA1301C2 /* TgWsProxyApp.swift */; };
-		E9AAFCEE0253415E8F99D2EF /* ContentView.swift in Sources/Resources */ = {isa = PBXBuildFile; fileRef = 70D21FEA363741B38070AFA3 /* ContentView.swift */; };
-		269FFA7ED89C4AA5B80D3BD3 /* AppViewModel.swift in Sources/Resources */ = {isa = PBXBuildFile; fileRef = 82CE2F25A2034086A5FD82E3 /* AppViewModel.swift */; };
-		DC1C672329E64153BA9FB23F /* ConfigStore.swift in Sources/Resources */ = {isa = PBXBuildFile; fileRef = 92A8865254144342B34D5882 /* ConfigStore.swift */; };
-		2B7624109E9F4831B57EED7F /* AppLog.swift in Sources/Resources */ = {isa = PBXBuildFile; fileRef = 96A518235ECA42FD8018221E /* AppLog.swift */; };
-		900E2AB53D6B48D9B2CCB219 /* Assets.xcassets in Sources/Resources */ = {isa = PBXBuildFile; fileRef = 87FF9AD6245E4DC6A45E042D /* Assets.xcassets */; };
-		DB908F07E38A4A058582B6C7 /* TgWsProxyCore in Frameworks */ = {isa = PBXBuildFile; productRef = 1CE34E33ACDC4C9B8C7C6620 /* TgWsProxyCore */; };
-		43104A06C52140EE9E6A9406 = {
+		93BB0C3CF915411795A9116C /* TgWsProxyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TgWsProxyApp.swift; sourceTree = "<group>"; };
+		DF5EFB07C29843AC86084748 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0FCB483BCD1945E2998E7D5F /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
+		46B5FA8997884BC59E35B3C2 /* ConfigStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigStore.swift; sourceTree = "<group>"; };
+		96E7A568A7A04611BFC84073 /* AppLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLog.swift; sourceTree = "<group>"; };
+		E341140BC351482AA9768ED6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		77F091785D9F4A3482EC8352 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		889666456E5743288D652E8B /* TgWsProxy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TgWsProxy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDBB80C03B8744E19C2AD18A /* TgWsProxyApp.swift in Build */ = {isa = PBXBuildFile; fileRef = 93BB0C3CF915411795A9116C /* TgWsProxyApp.swift */; };
+		502B7E49B6594B799261CEF7 /* ContentView.swift in Build */ = {isa = PBXBuildFile; fileRef = DF5EFB07C29843AC86084748 /* ContentView.swift */; };
+		C10F137F9AA24E489E88A8F3 /* AppViewModel.swift in Build */ = {isa = PBXBuildFile; fileRef = 0FCB483BCD1945E2998E7D5F /* AppViewModel.swift */; };
+		3F68061C9F284D4D86931734 /* ConfigStore.swift in Build */ = {isa = PBXBuildFile; fileRef = 46B5FA8997884BC59E35B3C2 /* ConfigStore.swift */; };
+		89E8F4EBE0D4412B8E786C21 /* AppLog.swift in Build */ = {isa = PBXBuildFile; fileRef = 96E7A568A7A04611BFC84073 /* AppLog.swift */; };
+		D3E093AED26B484AAF4907ED /* Assets.xcassets in Build */ = {isa = PBXBuildFile; fileRef = E341140BC351482AA9768ED6 /* Assets.xcassets */; };
+		8C657EBB13B24CA5BC1FE030 /* TgWsProxyCore in Frameworks */ = {isa = PBXBuildFile; productRef = 85C1F006857E4E8AA98AED6B /* TgWsProxyCore */; };
+		4D3241615DE14F9891230B44 /* TgWsProxy */ = {
 			isa = PBXGroup;
 			children = (
-				C2733468E99A46DCAA1301C2 /* TgWsProxyApp.swift */,
-				70D21FEA363741B38070AFA3 /* ContentView.swift */,
-				82CE2F25A2034086A5FD82E3 /* AppViewModel.swift */,
-				92A8865254144342B34D5882 /* ConfigStore.swift */,
-				96A518235ECA42FD8018221E /* AppLog.swift */,
-				87FF9AD6245E4DC6A45E042D /* Assets.xcassets */,
-				4E9FED57839B471EBA532861 /* Info.plist */,
+				93BB0C3CF915411795A9116C /* TgWsProxyApp.swift */,
+				DF5EFB07C29843AC86084748 /* ContentView.swift */,
+				0FCB483BCD1945E2998E7D5F /* AppViewModel.swift */,
+				46B5FA8997884BC59E35B3C2 /* ConfigStore.swift */,
+				96E7A568A7A04611BFC84073 /* AppLog.swift */,
+				E341140BC351482AA9768ED6 /* Assets.xcassets */,
+				77F091785D9F4A3482EC8352 /* Info.plist */,
 			);
 			path = TgWsProxy;
 			sourceTree = "<group>";
 		};
-		1F730D559FC443F7B30F7CDD = {
+		12ACEC4EDEFF4E379FA2B691 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C1C1DAC4DD314ED588EE6E87 /* TgWsProxy.app */,
+				889666456E5743288D652E8B /* TgWsProxy.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C4CBEEC44FF147EBA00CA8D0 = {
+		A14419D406654646ADE5C6A4 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				43104A06C52140EE9E6A9406 /* TgWsProxy */,
+				4D3241615DE14F9891230B44 /* TgWsProxy */,
 			);
 			path = App;
 			sourceTree = "<group>";
 		};
-		017C11B9B957443F8016D606 = {
+		174A9EBB76AC4AF9861E0056 = {
 			isa = PBXGroup;
 			children = (
-				C4CBEEC44FF147EBA00CA8D0,
-				1F730D559FC443F7B30F7CDD,
+				A14419D406654646ADE5C6A4 /* App */,
+				12ACEC4EDEFF4E379FA2B691 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		9E3019D642634829BDA5B763 /* Sources */ = {
+		13479955822D4FE2A79C7BE9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				12AB56E208D5453A9D355B32 /* TgWsProxyApp.swift */,
-				E9AAFCEE0253415E8F99D2EF /* ContentView.swift */,
-				269FFA7ED89C4AA5B80D3BD3 /* AppViewModel.swift */,
-				DC1C672329E64153BA9FB23F /* ConfigStore.swift */,
-				2B7624109E9F4831B57EED7F /* AppLog.swift */,
+				CDBB80C03B8744E19C2AD18A /* TgWsProxyApp.swift in Build */,
+				502B7E49B6594B799261CEF7 /* ContentView.swift in Build */,
+				C10F137F9AA24E489E88A8F3 /* AppViewModel.swift in Build */,
+				3F68061C9F284D4D86931734 /* ConfigStore.swift in Build */,
+				89E8F4EBE0D4412B8E786C21 /* AppLog.swift in Build */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6C2E7EC9518D4BDDA833581A /* Resources */ = {
+		C5B56BD0DC494B0382BD21C2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				900E2AB53D6B48D9B2CCB219 /* Assets */,
+				D3E093AED26B484AAF4907ED /* Assets.xcassets in Build */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DDFC845C7A074D9FA7892E90 /* Frameworks */ = {
+		FE40D7988D7D44168EBE1BA7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB908F07E38A4A058582B6C7 /* TgWsProxyCore */,
+				8C657EBB13B24CA5BC1FE030 /* TgWsProxyCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1F8FD86C911C44ABB96339D2 /* TgWsProxy */ = {
+		A9ADF136D04F4B90974D249B /* TgWsProxy */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F98BCAE334AF443BA3E31D1F /* Build configuration list */;
+			buildConfigurationList = C1B6F1364D4541259588AC09 /* Build configuration list for PBXNativeTarget "TgWsProxy" */;
 			buildPhases = (
-				9E3019D642634829BDA5B763,
-				DDFC845C7A074D9FA7892E90,
-				6C2E7EC9518D4BDDA833581A,
+				13479955822D4FE2A79C7BE9 /* Sources */,
+				FE40D7988D7D44168EBE1BA7 /* Frameworks */,
+				C5B56BD0DC494B0382BD21C2 /* Resources */,
 			);
-			buildRules = ();
-			dependencies = ();
+			buildRules = (
+			);
+			dependencies = (
+			);
 			name = TgWsProxy;
 			packageProductDependencies = (
-				1CE34E33ACDC4C9B8C7C6620 /* TgWsProxyCore */,
+				85C1F006857E4E8AA98AED6B /* TgWsProxyCore */,
 			);
 			productName = TgWsProxy;
-			productReference = C1C1DAC4DD314ED588EE6E87;
+			productReference = 889666456E5743288D652E8B /* TgWsProxy.app */;
 			productType = "com.apple.product-type.application";
 		};
-		14534A31752F4065A573193C /* Project object */ = {
+		1B0C8819473E4758A25E2963 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 			};
-			buildConfigurationList = 115BF1B470414187BB267D59;
+			buildConfigurationList = E2C2EE624B8D4851925FF630 /* Build configuration list for PBXProject "TgWsProxy" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
-			knownRegions = (en, Base);
-			mainGroup = 017C11B9B957443F8016D606;
-			packageReferences = (A49C6BDF281A4A43ABD188C0);
-			productRefGroup = 1F730D559FC443F7B30F7CDD;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 174A9EBB76AC4AF9861E0056;
+			packageReferences = (
+				804D7F012F6A4E51804145B9 /* XCLocalSwiftPackageReference "" */,
+			);
+			productRefGroup = 12ACEC4EDEFF4E379FA2B691 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1F8FD86C911C44ABB96339D2 /* TgWsProxy */,
+				A9ADF136D04F4B90974D249B /* TgWsProxy */,
 			);
 		};
-		1E4A7D0AB96946528916AF4A /* Debug */ = {
+		975EAD43DCA24ACEA2FF33AC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -141,13 +150,13 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				SDKROOT = iphoneos;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				GCC_OPTIMIZATION_LEVEL = 0;
 			};
 			name = Debug;
 		};
-		FF5939CA15724523A3299C32 /* Release */ = {
+		3D45F17AA0B743CFB1927774 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -158,74 +167,73 @@
 			};
 			name = Release;
 		};
-		D88B9B0E8ABE4560BC406E4A /* Debug */ = {
+		62658DC9F70E44EDA61D787E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = App/TgWsProxy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mushroomSquad.tgwsproxy;
-				PRODUCT_NAME = $(TARGET_NAME);
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1,2;
-				ENABLE_PREVIEWS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				SWIFT_OPTIMIZATION_LEVEL = -Onone;
 				ONLY_ACTIVE_ARCH = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 			};
 			name = Debug;
 		};
-		747FAC4DCBAB43739B136E9D /* Release */ = {
+		60414060A7B9461CBFA5302D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = App/TgWsProxy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mushroomSquad.tgwsproxy;
-				PRODUCT_NAME = $(TARGET_NAME);
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1,2;
-				ENABLE_PREVIEWS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				SWIFT_COMPILATION_MODE = wholemodule;
-				DEBUG_INFORMATION_FORMAT = dwarf-with-dsym;
 				VALIDATE_PRODUCT = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf-with-dsym;
 			};
 			name = Release;
 		};
-		115BF1B470414187BB267D59 = {
+		E2C2EE624B8D4851925FF630 /* Build configuration list for PBXProject "TgWsProxy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1E4A7D0AB96946528916AF4A /* Debug */,
-				FF5939CA15724523A3299C32 /* Release */,
+				975EAD43DCA24ACEA2FF33AC /* Debug */,
+				3D45F17AA0B743CFB1927774 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F98BCAE334AF443BA3E31D1F = {
+		C1B6F1364D4541259588AC09 /* Build configuration list for PBXNativeTarget "TgWsProxy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D88B9B0E8ABE4560BC406E4A /* Debug */,
-				747FAC4DCBAB43739B136E9D /* Release */,
+				62658DC9F70E44EDA61D787E /* Debug */,
+				60414060A7B9461CBFA5302D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 	};
-	rootObject = 14534A31752F4065A573193C /* Project object */;
+	rootObject = 1B0C8819473E4758A25E2963 /* Project object */;
 }

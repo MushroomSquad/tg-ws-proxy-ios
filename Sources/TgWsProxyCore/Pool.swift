@@ -41,14 +41,14 @@ public final class WsPool: @unchecked Sendable {
             }
             idle[k] = bucket
             lock.unlock()
-            stats.inc(\.poolHits)
+            stats.bumpPoolHits()
             reportSuccess(dc: dc, isMedia: isMedia)
             if allowRefill { scheduleRefill(dc: dc, isMedia: isMedia, targetIp: targetIp, domains: domains) }
             return entry.ws
         }
         idle[k] = bucket
         lock.unlock()
-        stats.inc(\.poolMisses)
+        stats.bumpPoolMisses()
         if allowRefill { scheduleRefill(dc: dc, isMedia: isMedia, targetIp: targetIp, domains: domains) }
         return nil
     }
@@ -137,7 +137,7 @@ public final class WsPool: @unchecked Sendable {
                 host: targetIp, domain: domain, timeoutMs: 7_000, sni: "sprinthost.ru",
                 bufferSize: config().bufferSize
             )
-            stats.inc(\.connectionsFronting)
+            stats.bumpConnectionsFronting()
             tryFrontingFirst = true
             return ws
         } catch {
@@ -201,13 +201,13 @@ public final class CfWorkerPool: @unchecked Sendable {
             }
             idle[k] = bucket
             lock.unlock()
-            stats.inc(\.cfPoolHits)
+            stats.bumpCfPoolHits()
             scheduleRefill(dc: dc, workerDomain: workerDomain, fallbackDst: fallbackDst)
             return entry.ws
         }
         idle[k] = bucket
         lock.unlock()
-        stats.inc(\.cfPoolMisses)
+        stats.bumpCfPoolMisses()
         scheduleRefill(dc: dc, workerDomain: workerDomain, fallbackDst: fallbackDst)
         return nil
     }
