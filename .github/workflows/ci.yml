@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  spm-tests:
+    name: SwiftPM tests (macOS)
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - name: Swift test
+        run: swift test --package-path .
+
+  xcodebuild-sim:
+    name: Xcode build (simulator)
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - name: Show Xcode
+        run: xcodebuild -version
+      - name: Build for iOS Simulator
+        run: |
+          set -euo pipefail
+          xcodebuild \
+            -project TgWsProxy.xcodeproj \
+            -scheme TgWsProxy \
+            -destination 'platform=iOS Simulator,name=iPhone 16' \
+            -configuration Debug \
+            CODE_SIGNING_ALLOWED=NO \
+            build

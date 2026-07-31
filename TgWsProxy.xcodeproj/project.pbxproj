@@ -1,0 +1,231 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {};
+	objectVersion = 56;
+	objects = {
+		1CE34E33ACDC4C9B8C7C6620 /* TgWsProxyCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A49C6BDF281A4A43ABD188C0 /* XCLocalSwiftPackageReference */;
+			productName = TgWsProxyCore;
+		};
+		A49C6BDF281A4A43ABD188C0 /* XCLocalSwiftPackageReference "" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = .;
+		};
+		C2733468E99A46DCAA1301C2 /* TgWsProxyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TgWsProxyApp.swift; sourceTree = "<group>"; };
+		70D21FEA363741B38070AFA3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		82CE2F25A2034086A5FD82E3 /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
+		92A8865254144342B34D5882 /* ConfigStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigStore.swift; sourceTree = "<group>"; };
+		96A518235ECA42FD8018221E /* AppLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLog.swift; sourceTree = "<group>"; };
+		87FF9AD6245E4DC6A45E042D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4E9FED57839B471EBA532861 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C1C1DAC4DD314ED588EE6E87 /* TgWsProxy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TgWsProxy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		12AB56E208D5453A9D355B32 /* TgWsProxyApp.swift in Sources/Resources */ = {isa = PBXBuildFile; fileRef = C2733468E99A46DCAA1301C2 /* TgWsProxyApp.swift */; };
+		E9AAFCEE0253415E8F99D2EF /* ContentView.swift in Sources/Resources */ = {isa = PBXBuildFile; fileRef = 70D21FEA363741B38070AFA3 /* ContentView.swift */; };
+		269FFA7ED89C4AA5B80D3BD3 /* AppViewModel.swift in Sources/Resources */ = {isa = PBXBuildFile; fileRef = 82CE2F25A2034086A5FD82E3 /* AppViewModel.swift */; };
+		DC1C672329E64153BA9FB23F /* ConfigStore.swift in Sources/Resources */ = {isa = PBXBuildFile; fileRef = 92A8865254144342B34D5882 /* ConfigStore.swift */; };
+		2B7624109E9F4831B57EED7F /* AppLog.swift in Sources/Resources */ = {isa = PBXBuildFile; fileRef = 96A518235ECA42FD8018221E /* AppLog.swift */; };
+		900E2AB53D6B48D9B2CCB219 /* Assets.xcassets in Sources/Resources */ = {isa = PBXBuildFile; fileRef = 87FF9AD6245E4DC6A45E042D /* Assets.xcassets */; };
+		DB908F07E38A4A058582B6C7 /* TgWsProxyCore in Frameworks */ = {isa = PBXBuildFile; productRef = 1CE34E33ACDC4C9B8C7C6620 /* TgWsProxyCore */; };
+		43104A06C52140EE9E6A9406 = {
+			isa = PBXGroup;
+			children = (
+				C2733468E99A46DCAA1301C2 /* TgWsProxyApp.swift */,
+				70D21FEA363741B38070AFA3 /* ContentView.swift */,
+				82CE2F25A2034086A5FD82E3 /* AppViewModel.swift */,
+				92A8865254144342B34D5882 /* ConfigStore.swift */,
+				96A518235ECA42FD8018221E /* AppLog.swift */,
+				87FF9AD6245E4DC6A45E042D /* Assets.xcassets */,
+				4E9FED57839B471EBA532861 /* Info.plist */,
+			);
+			path = TgWsProxy;
+			sourceTree = "<group>";
+		};
+		1F730D559FC443F7B30F7CDD = {
+			isa = PBXGroup;
+			children = (
+				C1C1DAC4DD314ED588EE6E87 /* TgWsProxy.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C4CBEEC44FF147EBA00CA8D0 = {
+			isa = PBXGroup;
+			children = (
+				43104A06C52140EE9E6A9406 /* TgWsProxy */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		017C11B9B957443F8016D606 = {
+			isa = PBXGroup;
+			children = (
+				C4CBEEC44FF147EBA00CA8D0,
+				1F730D559FC443F7B30F7CDD,
+			);
+			sourceTree = "<group>";
+		};
+		9E3019D642634829BDA5B763 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12AB56E208D5453A9D355B32 /* TgWsProxyApp.swift */,
+				E9AAFCEE0253415E8F99D2EF /* ContentView.swift */,
+				269FFA7ED89C4AA5B80D3BD3 /* AppViewModel.swift */,
+				DC1C672329E64153BA9FB23F /* ConfigStore.swift */,
+				2B7624109E9F4831B57EED7F /* AppLog.swift */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6C2E7EC9518D4BDDA833581A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				900E2AB53D6B48D9B2CCB219 /* Assets */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DDFC845C7A074D9FA7892E90 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB908F07E38A4A058582B6C7 /* TgWsProxyCore */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F8FD86C911C44ABB96339D2 /* TgWsProxy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F98BCAE334AF443BA3E31D1F /* Build configuration list */;
+			buildPhases = (
+				9E3019D642634829BDA5B763,
+				DDFC845C7A074D9FA7892E90,
+				6C2E7EC9518D4BDDA833581A,
+			);
+			buildRules = ();
+			dependencies = ();
+			name = TgWsProxy;
+			packageProductDependencies = (
+				1CE34E33ACDC4C9B8C7C6620 /* TgWsProxyCore */,
+			);
+			productName = TgWsProxy;
+			productReference = C1C1DAC4DD314ED588EE6E87;
+			productType = "com.apple.product-type.application";
+		};
+		14534A31752F4065A573193C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+			};
+			buildConfigurationList = 115BF1B470414187BB267D59;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (en, Base);
+			mainGroup = 017C11B9B957443F8016D606;
+			packageReferences = (A49C6BDF281A4A43ABD188C0);
+			productRefGroup = 1F730D559FC443F7B30F7CDD;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1F8FD86C911C44ABB96339D2 /* TgWsProxy */,
+			);
+		};
+		1E4A7D0AB96946528916AF4A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				SDKROOT = iphoneos;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				ONLY_ACTIVE_ARCH = YES;
+			};
+			name = Debug;
+		};
+		FF5939CA15724523A3299C32 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		D88B9B0E8ABE4560BC406E4A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = App/TgWsProxy/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mushroomSquad.tgwsproxy;
+				PRODUCT_NAME = $(TARGET_NAME);
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1,2;
+				ENABLE_PREVIEWS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = -Onone;
+				ONLY_ACTIVE_ARCH = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+			};
+			name = Debug;
+		};
+		747FAC4DCBAB43739B136E9D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = App/TgWsProxy/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mushroomSquad.tgwsproxy;
+				PRODUCT_NAME = $(TARGET_NAME);
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1,2;
+				ENABLE_PREVIEWS = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				DEBUG_INFORMATION_FORMAT = dwarf-with-dsym;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		115BF1B470414187BB267D59 = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1E4A7D0AB96946528916AF4A /* Debug */,
+				FF5939CA15724523A3299C32 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F98BCAE334AF443BA3E31D1F = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D88B9B0E8ABE4560BC406E4A /* Debug */,
+				747FAC4DCBAB43739B136E9D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+	};
+	rootObject = 14534A31752F4065A573193C /* Project object */;
+}
